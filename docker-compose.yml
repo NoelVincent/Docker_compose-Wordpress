@@ -1,0 +1,44 @@
+---
+
+version: "3"
+
+services:
+ 
+  mysql_db:  
+     
+    image: mysql:latest
+    container_name: db
+    restart: always
+    volumes:
+       - dbvol:/var/lib/mysql/
+    networks:
+       - wordsite
+    environment:
+      - MYSQL_ROOT_PASSWORD=root@123
+      - MYSQL_DATABASE=wp
+      - MYSQL_USER=wp
+      - MYSQL_PASSWORD=wp
+        
+  wordpress:   
+ 
+    image: wordpress:latest
+    container_name: wp
+    restart: always
+    volumes:
+       - wpvol:/var/www/html/
+    networks:
+       - wordsite
+    environment:
+      - WORDPRESS_DB_HOST=db
+      - WORDPRESS_DB_USER=wp
+      - WORDPRESS_DB_PASSWORD=wp
+      - WORDPRESS_DB_NAME=wp
+    ports:
+      - "80:80"
+    
+volumes:
+  wpvol:
+  dbvol:
+    
+networks:
+  wordsite:
