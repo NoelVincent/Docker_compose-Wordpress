@@ -35,7 +35,7 @@ chmod +x /usr/local/bin/docker-compose
 Please see the [website](https://docs.docker.com/compose/install/) for more information.
 
 # Building Wordpress site
-> Note: The compose file should have the name and the extenion as docker-compose.yml
+> Note: The compose file should have the name and the extension as docker-compose.yml
 ```sh
 ---
 
